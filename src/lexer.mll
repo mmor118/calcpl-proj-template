@@ -16,6 +16,9 @@ rule read =
   | "<=" { LEQ }
   | "*" { TIMES }
   | "+" { PLUS }
+  | "-" { MINUS }
+  | "/" { DIVIDE }
+  | "=>" { GREATER_THAN_EQUALS }
   | "(" { LPAREN }
   | ")" { RPAREN }
   | "let" { LET }
@@ -26,7 +29,9 @@ rule read =
   | "else" { ELSE }
   | ":" {COLON}
   | "int" {INT_TYPE}
+  | "float" {FLOAT_TYPE}
   | "bool" {BOOL_TYPE}
   | id { ID (Lexing.lexeme lexbuf) }
   | int { INT (int_of_string (Lexing.lexeme lexbuf)) }
+  | float as f { FLOAT (float_of_string f) }
   | eof { EOF }

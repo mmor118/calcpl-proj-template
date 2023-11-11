@@ -1,18 +1,28 @@
 type bop = 
-  | Add
-  | Mult
-  | Leq
+| Add
+| Sub
+| Mult
+| Div
+| Leq
+| Geq
+| PlusFloat   
+| MinusFloat  
+| MultFloat   
+| DivFloat    
+| GeqFloat    
+
 
 (** [typ] represents the type of an expression. *)
 type typ =
   | TInt
   | TBool
+  | TFloat
 
 type expr = 
-| Var of string
 | Int of int
 | Bool of bool
-| Binop of bop * expr * expr
-| Float of float
+| Float of float   
+| Var of string
+| Binop of binop * expr * expr
 | Let of string * typ * expr * expr
 | If of expr * expr * expr
